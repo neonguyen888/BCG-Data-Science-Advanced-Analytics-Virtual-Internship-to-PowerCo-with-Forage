@@ -51,8 +51,8 @@ Evaluated on a 25% hold-out test set (3,652 customers):
 ## Repository structure
 
 ```
-├── Task 1 - Business Understanding & Hypothesis Framing/   # hypothesis email (PDF + DOCX)
-├── Task 2 - Exploratory Data Analysis/                      # EDA notebook, raw data, EDA summary
+├── Task 1 - Business Understanding & Hypothesis Framing/   # hypothesis email (PDF)
+├── Task 2 - Exploratory Data Analysis/                      # EDA notebook, raw data, data dictionary, EDA summary
 ├── Task 3 - Feature Engineering & Modelling/                # features, models, discount analysis
 └── Task 4 - Findings & Recommendations/                     # executive summary
 ```
