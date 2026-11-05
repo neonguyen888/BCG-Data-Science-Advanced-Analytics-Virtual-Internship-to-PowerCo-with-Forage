@@ -96,19 +96,21 @@ Develop an abstract slide synthesizing all the findings from the project so far,
 ---
 ## Results (Task 3 model)
 
-Random Forest (1,000 trees) evaluated on a 25% hold-out test set (3,652 customers):
+Evaluated on a 25% hold-out test set (3,652 customers, about 10% churn):
 
-| Metric | Score |
-|---|---|
-| Accuracy | 90.3% |
-| Precision (churn) | 0.92 |
-| Recall (churn) | 0.06 |
-| ROC AUC | 0.70 |
-| 5-fold CV accuracy | 90.8% |
+| Metric | Baseline Random Forest (threshold 0.5) | Balanced Random Forest (tuned threshold 0.36) |
+|---|---|---|
+| Accuracy | 90.5% | 85.2% |
+| Precision (churn) | 0.88 | 0.27 |
+| Recall (churn) | 0.06 | 0.28 |
+| F1 (churn) | 0.11 | 0.28 |
+| ROC AUC | 0.67 | 0.66 |
 
-**What this means:** only about 10% of customers churn, so accuracy looks high even though the model catches few churners. When it does flag a customer, it is usually right (high precision), but it misses most of them (low recall). Price sensitivity alone is a weak predictor of churn, and next steps would be balancing the classes, tuning the decision threshold, and adding non-price features.
+5-fold cross-validation accuracy of the baseline model: 90.8%.
 
-**Discount analysis:** offering the 20% discount to customers with a predicted churn probability of 0.5 or above gives the largest revenue gain on the test set (about $2,750).
+**What this means:** because only about 10% of customers churn, the baseline looks accurate but catches only 6% of churners. Weighting the minority class and choosing the threshold from training data (out-of-fold predictions, never the test set) raises recall to 28%, about 4.6x more churners caught, at the cost of more false alarms. Price features alone are a weak predictor of churn, so the next step would be adding non-price data such as customer service history.
+
+**Discount analysis:** offering the 20% discount to customers with a predicted churn probability of 0.5 or above gives the largest revenue gain on the test set (about $2,930).
 
 ## How to run
 
