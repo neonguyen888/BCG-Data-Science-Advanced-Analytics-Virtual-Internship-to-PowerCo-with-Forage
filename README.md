@@ -2,7 +2,7 @@
 
    ![Data Science   Advanced Analytics VEP](https://user-images.githubusercontent.com/82594129/225690586-ef6095dc-a2e4-4835-8061-6707adf54c08.png)
 
-completed with certification bagde
+Completed with a certificate of completion from BCG and Forage.
 ---
 ## Task 1 
 ### Business Understanding & Hypothesis Framing
@@ -91,3 +91,29 @@ Develop an abstract slide synthesizing all the findings from the project so far,
 
 * What is the most important number or metric to share with the client?
 * What impact would the model have on the client’s bottom line?
+
+
+---
+## Results (Task 3 model)
+
+Random Forest (1,000 trees) evaluated on a 25% hold-out test set (3,652 customers):
+
+| Metric | Score |
+|---|---|
+| Accuracy | 90.3% |
+| Precision (churn) | 0.92 |
+| Recall (churn) | 0.06 |
+| ROC AUC | 0.70 |
+| 5-fold CV accuracy | 90.8% |
+
+**What this means:** only about 10% of customers churn, so accuracy looks high even though the model catches few churners. When it does flag a customer, it is usually right (high precision), but it misses most of them (low recall). Price sensitivity alone is a weak predictor of churn, and next steps would be balancing the classes, tuning the decision threshold, and adding non-price features.
+
+**Discount analysis:** offering the 20% discount to customers with a predicted churn probability of 0.5 or above gives the largest revenue gain on the test set (about $2,750).
+
+## How to run
+
+1. Install: `pip install pandas numpy matplotlib seaborn scikit-learn`
+2. Run `Task 2 - Exploratory Data Analysis/Exploratory Data Analysis (Task 2).ipynb`. It reads the raw data from `Dataset/` and saves `clean_eda_data.csv`.
+3. Run `Task 3 - Feature Engineering & Modelling/feature_engineering.ipynb` to build features, train the model, and run the discount analysis.
+
+Tested with Python 3.13, pandas 3.0, and scikit-learn 1.9.
